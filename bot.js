@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var discord_js_1 = require("discord.js");
+var express = require('express');
 var axios_1 = require("axios");
 require('dotenv').config();
 var bot = new discord_js_1.Client();
@@ -70,4 +71,10 @@ bot.on('message', function (message) { return __awaiter(void 0, void 0, void 0, 
         }
     });
 }); });
+var app = express();
+app.get('*', function (req, res) {
+    res.send('Hey');
+});
+var port = process.env.PORT || 5000;
+app.listen(port, function () { return console.log("Listening to port " + port); });
 bot.login(process.env.BOT_TOKEN);

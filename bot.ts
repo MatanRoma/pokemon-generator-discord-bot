@@ -1,4 +1,5 @@
 import { Client, Message } from 'discord.js';
+const express = require('express');
 import axios from 'axios';
 require('dotenv').config();
 
@@ -21,4 +22,12 @@ bot.on('message', async (message: Message) => {
   }
 });
 
+const app = express();
+
+app.get('*', (req, res) => {
+  res.send('Hey');
+});
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Listening to port ${port}`));
 bot.login(process.env.BOT_TOKEN);
